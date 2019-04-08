@@ -8,6 +8,9 @@ ENV CONF_VERSION  6.15.1
 ENV JAVA_CACERTS  $JAVA_HOME/jre/lib/security/cacerts
 ENV CERTIFICATE   $CONF_HOME/certificate
 
+COPY "atlassian-agent.jar" "/"
+ENV JAVA_OPTS "-javaagent:/atlassian-agent.jar ${JAVA_OPTS}"
+
 # Install Atlassian Confluence and helper tools and setup initial home
 # directory structure.
 RUN set -x \
